@@ -10,11 +10,10 @@ public static class RastreamentoMapper
     {
         ArgumentNullException.ThrowIfNull(rastreamento);
 
-        return new BuscarTrackingResponse(
-            rastreamento.CodigoRastreio,
-            rastreamento.Transportadora,
-            rastreamento.StatusAtual,
-            rastreamento.Eventos.Select(evento => evento.ToResponse()).ToList());
+        return new BuscarTrackingResponse(rastreamento.CodigoRastreio,
+                                          rastreamento.Transportadora,
+                                          rastreamento.StatusAtual,
+                                          rastreamento.Eventos.Select(evento => evento.ToResponse()).ToList());
     }
 
     public static EventoRastreioResponse ToResponse(this EventoRastreio evento) =>

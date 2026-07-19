@@ -6,10 +6,7 @@ public sealed class TransportadoraIndisponivelException : Exception
 {
     public TransportadoraEnum Transportadora { get; }
 
-    public TransportadoraIndisponivelException(
-        TransportadoraEnum transportadora,
-        string mensagem,
-        Exception excecaoInterna)
+    public TransportadoraIndisponivelException(TransportadoraEnum transportadora, string mensagem, Exception excecaoInterna)
         : base(mensagem, excecaoInterna)
     {
         Transportadora = transportadora;

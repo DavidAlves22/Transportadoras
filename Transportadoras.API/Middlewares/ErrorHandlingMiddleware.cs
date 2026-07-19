@@ -33,11 +33,9 @@ public sealed class ErrorHandlingMiddleware
         var (statusCode, mensagem) = MapearExcecao(excecao);
 
         if (statusCode >= HttpStatusCode.InternalServerError)
-            _logger.LogError(excecao, "Falha ao processar {Metodo} {Caminho}.",
-                context.Request.Method, context.Request.Path);
+            _logger.LogError(excecao, "Falha ao processar {Metodo} {Caminho}.", context.Request.Method, context.Request.Path);
         else
-            _logger.LogWarning("Requisição {Metodo} {Caminho} rejeitada ({StatusCode}): {Mensagem}",
-                context.Request.Method, context.Request.Path, (int)statusCode, mensagem);
+            _logger.LogWarning("Requisição {Metodo} {Caminho} rejeitada ({StatusCode}): {Mensagem}", context.Request.Method, context.Request.Path, (int)statusCode, mensagem);
 
         context.Response.ContentType = "application/json";
         context.Response.StatusCode = (int)statusCode;

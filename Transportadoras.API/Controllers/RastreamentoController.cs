@@ -24,10 +24,7 @@ public sealed class RastreamentoController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status502BadGateway)]
-    public async Task<ActionResult<BuscarTrackingResponse>> BuscarTracking(
-        TransportadoraEnum transportadora,
-        string codigoRastreio,
-        CancellationToken cancellationToken)
+    public async Task<ActionResult<BuscarTrackingResponse>> BuscarTracking(TransportadoraEnum transportadora, string codigoRastreio, CancellationToken cancellationToken)
     {
         var request = new BuscarTrackingRequest(transportadora, codigoRastreio);
         var resposta = await _buscarTrackingUseCase.ExecutarAsync(request, cancellationToken);

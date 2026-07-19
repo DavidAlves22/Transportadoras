@@ -12,9 +12,7 @@ public sealed class StubHttpMessageHandler : HttpMessageHandler
         _respostasPorCodigo = respostasPorCodigo;
     }
 
-    protected override Task<HttpResponseMessage> SendAsync(
-        HttpRequestMessage request,
-        CancellationToken cancellationToken)
+    protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {
         var codigoRastreio = request.RequestUri!.Segments[^1].Trim('/');
 

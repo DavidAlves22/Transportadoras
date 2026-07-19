@@ -11,8 +11,5 @@ public sealed class TotalExpressClient : TransportadoraApiClientBase, ITotalExpr
 
     protected override TransportadoraEnum Transportadora => TransportadoraEnum.TotalExpress;
 
-    public Task<TotalExpressTrackingResponse?> ObterTrackingAsync(
-        string codigoRastreio,
-        CancellationToken cancellationToken = default) =>
-        ObterAsync<TotalExpressTrackingResponse>($"rastreio/{codigoRastreio}", cancellationToken);
+    public Task<TotalExpressTrackingResponse?> ObterTrackingAsync(string codigoRastreio, CancellationToken cancellationToken = default) => ObterAsync<TotalExpressTrackingResponse>($"rastreio/{codigoRastreio}", cancellationToken);
 }

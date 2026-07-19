@@ -17,15 +17,12 @@ public sealed class TotalExpressBuscaTrackingStrategy : IBuscaTrackingStrategy
 
     public TransportadoraEnum Transportadora => TransportadoraEnum.TotalExpress;
 
-    public async Task<Rastreamento> BuscarTrackingAsync(
-        string codigoRastreio,
-        CancellationToken cancellationToken = default)
+    public async Task<Rastreamento> BuscarTrackingAsync(string codigoRastreio, CancellationToken cancellationToken = default)
     {
         var contrato = await _totalExpressClient.ObterTrackingAsync(codigoRastreio, cancellationToken);
 
         if (contrato is null)
-            throw new RastreamentoNaoEncontradoException(
-                $"Rastreamento '{codigoRastreio}' não encontrado na TotalExpress.");
+            throw new RastreamentoNaoEncontradoException($"Rastreamento '{codigoRastreio}' não encontrado na TotalExpress.");
 
         return contrato.ToDomain();
     }

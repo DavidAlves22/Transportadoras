@@ -17,8 +17,7 @@ public abstract class TransportadoraApiClientBase
 
     protected abstract TransportadoraEnum Transportadora { get; }
 
-    protected async Task<TContrato?> ObterAsync<TContrato>(string rota, CancellationToken cancellationToken)
-        where TContrato : class
+    protected async Task<TContrato?> ObterAsync<TContrato>(string rota, CancellationToken cancellationToken) where TContrato : class
     {
         try
         {
@@ -33,24 +32,21 @@ public abstract class TransportadoraApiClientBase
         }
         catch (HttpRequestException excecao)
         {
-            throw new TransportadoraIndisponivelException(
-                Transportadora,
-                $"Falha ao consultar a API da transportadora '{Transportadora}'.",
-                excecao);
+            throw new TransportadoraIndisponivelException(Transportadora,
+                                                          $"Falha ao consultar a API da transportadora '{Transportadora}'.",
+                                                          excecao);
         }
         catch (TaskCanceledException excecao) when (!cancellationToken.IsCancellationRequested)
         {
-            throw new TransportadoraIndisponivelException(
-                Transportadora,
-                $"Tempo limite excedido ao consultar a API da transportadora '{Transportadora}'.",
-                excecao);
+            throw new TransportadoraIndisponivelException(Transportadora,
+                                                          $"Tempo limite excedido ao consultar a API da transportadora '{Transportadora}'.",
+                                                          excecao);
         }
         catch (JsonException excecao)
         {
-            throw new TransportadoraIndisponivelException(
-                Transportadora,
-                $"A API da transportadora '{Transportadora}' retornou uma resposta ilegível.",
-                excecao);
+            throw new TransportadoraIndisponivelException(Transportadora,
+                                                          $"A API da transportadora '{Transportadora}' retornou uma resposta ilegível.",
+                                                          excecao);
         }
     }
 }

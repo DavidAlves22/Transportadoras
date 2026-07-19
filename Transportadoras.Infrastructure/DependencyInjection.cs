@@ -38,8 +38,7 @@ public static class DependencyInjection
     private static Uri ResolverBaseUrl(string baseUrl, string nomeTransportadora)
     {
         if (string.IsNullOrWhiteSpace(baseUrl))
-            throw new InvalidOperationException(
-                $"BaseUrl da transportadora '{nomeTransportadora}' não configurada na seção '{TransportadoraApiOptions.SecaoConfiguracao}'.");
+            throw new InvalidOperationException($"BaseUrl da transportadora '{nomeTransportadora}' não configurada na seção '{TransportadoraApiOptions.SecaoConfiguracao}'.");
 
         return new Uri(baseUrl.EndsWith('/') ? baseUrl : baseUrl + "/");
     }

@@ -37,11 +37,10 @@ public static class TotalExpressTrackingMapper
 
     private static EventoRastreio ToDomain(TotalExpressOcorrencia ocorrencia)
     {
-        return new EventoRastreio(
-            ConverterDataHora(ocorrencia.DataHora),
-            ConverterStatus(ocorrencia.CodStatus),
-            ocorrencia.Situacao ?? "Sem descrição",
-            ocorrencia.Praca);
+        return new EventoRastreio(ConverterDataHora(ocorrencia.DataHora),
+                                  ConverterStatus(ocorrencia.CodStatus),
+                                  ocorrencia.Situacao ?? "Sem descrição",
+                                  ocorrencia.Praca);
     }
 
     private static DateTime ConverterDataHora(string? dataHora)

@@ -37,11 +37,10 @@ public static class LoggiTrackingMapper
         if (evento.Timestamp is null)
             throw new ArgumentException("Evento da Loggi não possui 'timestamp'.");
 
-        return new EventoRastreio(
-            evento.Timestamp.Value.UtcDateTime,
-            ConverterStatus(evento.Status),
-            evento.Description ?? evento.Status ?? "Sem descrição",
-            evento.City);
+        return new EventoRastreio(evento.Timestamp.Value.UtcDateTime,
+                                  ConverterStatus(evento.Status),
+                                  evento.Description ?? evento.Status ?? "Sem descrição",
+                                  evento.City);
     }
 
     private static StatusRastreioEnum ConverterStatus(string? status)
